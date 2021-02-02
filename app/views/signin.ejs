@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입?</title>
+</head>
+<body>
+    <header></header>
+    <main>
+
+        <div>
+            <div>
+                회원가입
+            </div>
+            <div>
+
+                <% if(IDISEXIST === 1) { %>
+                    <div>동일 아이디 존재</div>
+                <% } %>
+                <% if(EMAILISEXIST === 1) { %>
+                    <div>동일 이메일 존재</div>
+                <% } %>
+
+            </div>
+        </div>
+
+        <div class="signin_box">
+            <form action="/signin/signin" method="POST">
+                <div class="signin_box-info">
+                    <div>
+                        <span>아이디</span>
+                        <input type="text" 
+                        name="id" 
+                        class="signinID" 
+                        placeholder="4자~20자"
+                        minlength="4"
+                        maxlength="20">
+                    </div>
+                    <div>
+                        <span>비밀번호</span>
+                        <input type="password" 
+                        name="pw" 
+                        class="signinPW" 
+                        placeholder="10자~20자"
+                        minlength="10"
+                        maxlength="20">
+                    </div>
+                    <div>
+                        <span>이메일</span>
+                        <input type="email" name="email" class="signinEMAIL" placeholder="이메일" maxlength="44">
+                    </div>
+                    <div>
+                        <input type="text" name="guild" class="signinG" placeholder="길드 이름">
+                    </div>
+                </div>
+                <button type="submit" class="signin-btn">submit!</button>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>

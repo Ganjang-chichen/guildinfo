@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <div>
+            <div>회원가입</div>
+            
+            <% if(err) { %>
+                <div>ID 가 틀렸거나 PW가 틀렸습니다.</div>
+            <% } %>
+
+        </div>
+        <div>
+            <form action="/login/login" method="POST">
+                <div class="login">
+                    <input type="text" name="id" class="loginID" placeholder="아이디 입력">
+                </div>
+                <div class="password">
+                    <input type="password" name="pw" class="loginPW" placeholder="비밀번호">
+                </div>
+                <button type="submit">Log IN</button>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
