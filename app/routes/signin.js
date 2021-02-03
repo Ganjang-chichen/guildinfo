@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var crypto = require('crypto');
-var async = require('async');
 var database = require('../config/database.js');
 var conn = database.init();
- 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     
@@ -23,6 +22,7 @@ router.post('/signin', function(req, res, next) {
     let PW = crypto.createHash('sha512').update(req.body.pw).digest('base64');
     let EMAIL = req.body.email;
     let GUILD = req.body.guild;
+    let SERTIFY = req.body.sertify;
 
     console.log(PW.length);
 
@@ -70,5 +70,7 @@ router.post('/signin', function(req, res, next) {
     insert();
 
 });
+
+
 
 module.exports = router;

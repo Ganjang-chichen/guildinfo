@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <div>
+            <div> <%= id %> </div>
+            <div>
+                <% if(err) { %>
+                    <div><%= err %></div>
+                <% } %>
+            </div>
+        </div>
+        <div>
+            <div>
+                <% if(isserty) { %>
+                    <div>메일 인증 완료</div>
+                <% }else { %>
+                    <div>이메일 인증</div>
+                    <form action="/private_info/send" method="POST">
+                        <button onclick="alert('인증번호 발송 완료')" >인증번호 발송</button>
+                    </form>
+                    <form action="/private_info/check" method="POST">
+                        <div>인증번호</div>
+                        <input type="text" name="sert">
+                        <button type="submit" >입력</button>
+                    </form>
+                <% } %>
+
+            </div>
+
+            <div>
+                <div>길드 연동</div>
+                <div>
+                    <form action="/pravate_info/connect_guild">
+                        <button>연동하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>

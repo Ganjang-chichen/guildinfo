@@ -16,7 +16,7 @@
 
 ## 사용 IDE
 
-몽고DB
+MYSQL
 Node js
 ejs
 

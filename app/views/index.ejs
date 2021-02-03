@@ -5,7 +5,55 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= id %></p>
+    <header></header>
+    <main>
+      <div>
+        <div>
+          환영합니다. <%= id %>
+        </div>
+        <div>
+          <%= err %>
+        </div>
+      </div>
+
+      <% if (id === undefined || id === null) { %>
+      <div>
+        <form action="/login" method="GET">
+          <div>
+            <button>로그인</button>
+          </div>
+        </form>
+      </div>
+      <% } %>
+
+      <% if (id !== undefined && id !== null) { %>
+      <div>
+        <form action="/private_info" method="GET">
+          <div>
+            <button>이메일 인증 및 길드연동</button>
+          </div>
+        </form>
+      </div>
+      <% } %>
+
+      <% if (sertify) { %>
+      <div>
+        <form action="/index/mvrade" method="GET">
+          <div>
+            <button>수로관리</button>
+          </div>
+        </form>
+      </div><div>
+        <form action="/index/mvflag" method="GET">
+          <div>
+            <button>플래그 관리</button>
+          </div>
+        </form>
+      </div>
+
+      <% } %>
+
+    </main>
+    <footer></footer>
   </body>
 </html>
