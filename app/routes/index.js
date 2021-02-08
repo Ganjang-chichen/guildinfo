@@ -17,15 +17,22 @@ router.get('/', function(req, res, next) {
       }else {
         if(rows[0].mail_sertify === 1){
           ISSERTY = true;
-        }
-      }
-    })
-  }
 
-  res.render('index', { title: 'Express' 
+          res.render('index', { title: 'Express' 
                       , id : ID
                       , err : req.session.ERROR
                       , sertify : ISSERTY});
+        }
+      }
+    })
+  }else {
+    res.render('index', { title: 'Express' 
+                      , id : ID
+                      , err : req.session.ERROR
+                      , sertify : ISSERTY});
+  }
+
+  
 });
 
 router.get('/index', function(req, res, next) {

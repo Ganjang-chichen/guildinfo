@@ -5,6 +5,7 @@ var database = require('../config/database.js');
 var conn = database.init();
 var mailsender = require('../config/mailsender');
 const session = require('express-session');
+var PythonShell  = require('python-shell');
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -18,6 +19,7 @@ router.get('/', function(req, res, next) {
     const ID = req.session.USERNAME;
     let ISSERTY = false;
     let ERROR = req.session.EMAILERROR;
+    let guild_link;
 
     if(ID) {
         let sql = `SELECT * FROM user_info WHERE id = '${ID}' `;
@@ -27,16 +29,19 @@ router.get('/', function(req, res, next) {
             }else {
                 if(rows[0].mail_sertify === 1){
                     ISSERTY = true;
+                    guild_link = rows[0].guild_link;
                 }
             }
             res.render('private_info', {id : ID,
                 isserty : ISSERTY,
-                err : ERROR});
+                err : ERROR,
+                g_link : guild_link});
         });
     }else {
         res.render('private_info', {id : ID,
             isserty : ISSERTY,
-            err : ERROR});
+            err : ERROR,
+            g_link : guild_link});
     }
 
 });
@@ -82,6 +87,58 @@ router.post('/check', (req, res) => {
     }
 
 
+});
+
+router.post('/connect_guild', (req, res) => {
+
+    let ID = req.session.USERNAME;
+    let GUILDNAME;
+    let WORLD;
+
+    let sql = `SELECT world, guildname FROM user_info WHERE id = '${ID}' `;
+    conn.query(sql, (err, rows, field) => {
+        if(err) {
+            console.log(err)
+        }else {
+            GUILDNAME = rows[0].guildname;
+            WORLD = rows[0].world;
+
+            let options = {
+                mode : 'text',
+                pythonPath: '',
+                pythonOptions: ['-u'],
+                scriptPath: './public/python/',
+                args : [GUILDNAME, WORLD]
+            };
+
+            PythonShell.PythonShell.run("create_guild_data.py", options, function(err, data) {
+                if (err) throw err;
+                console.log(data)
+                let sql3 = `UPDATE user_info SET guild_link = 2 WHERE id = '${ID}' `
+                conn.query(sql3, (err, rows2, field) => {
+                    if(err){
+                        console.log('error accured at connect g2 : ' + err);
+                    }else {
+                        console.log("update success at connect g2");
+                    }
+                });
+            });
+            
+            let sql2 = `UPDATE user_info SET guild_link = 1 WHERE id = '${ID}' `
+            conn.query(sql2, (err, rows2, field) => {
+                if(err){
+                    console.log('error accured at connect g : ' + err);
+                }else {
+                    console.log("update success at connect g");
+                }
+                res.redirect('/private_info');
+            });
+
+            
+        }
+    });
+    
+    
 });
 
 module.exports = router;

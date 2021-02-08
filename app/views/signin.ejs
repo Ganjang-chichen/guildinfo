@@ -35,7 +35,8 @@
                         class="signinID" 
                         placeholder="4자~20자"
                         minlength="4"
-                        maxlength="20">
+                        maxlength="20"
+                        required />
                     </div>
                     <div>
                         <span>비밀번호</span>
@@ -44,18 +45,46 @@
                         class="signinPW" 
                         placeholder="10자~20자"
                         minlength="10"
-                        maxlength="20">
+                        maxlength="20"
+                        required />
                     </div>
                     <div>
                         <span>이메일</span>
                         <input type="email" name="email" class="signinEMAIL" placeholder="이메일" maxlength="44">
                     </div>
                     <div>
+                        <span>월드 선택</span>
+                        <select name="world" id="">
+                            <option value="46">리부트2</option>
+                            <option value="45">리부트</option>
+                            <option value="44">오로라</option>
+                            <option value="43">레드</option>
+                            <option value="29">이노시스</option>
+
+                            <option value="10">유니온</option>
+                            <option value="0">스카니아</option>
+                            <option value="3">루나</option>
+                            <option value="4">제니스</option>
+                            <option value="5">크로아</option>
+
+                            <option value="1">베라</option>
+                            <option value="16">엘리시움</option>
+                            <option value="50">아케인</option>
+                            <option value="51">노바</option>
+                            <option value="49">버닝</option>
+
+                            <option value="48">버닝2</option>
+                            <option value="52">버닝3</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span>길드명</span>
                         <input type="text"
                             name="guild"
                             class="signinG" 
                             placeholder="길드 이름"
-                            minlength="2">
+                            minlength="2"
+                            required />
                     </div>
                 </div>
                 <button type="submit" class="signin-btn">submit!</button>

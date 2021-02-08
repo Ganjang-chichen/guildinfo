@@ -35,12 +35,21 @@
             </div>
 
             <div>
-                <div>길드 연동</div>
-                <div>
-                    <form action="/pravate_info/connect_guild">
-                        <button>연동하기</button>
-                    </form>
-                </div>
+
+                <% if (g_link === 1) { %>
+                    <div>길드 연동 작업중</div>
+                <% }else if(g_link === 2) { %>
+                    <div>길드 연동 완료</div>
+                <% }else if(g_link === -1) { %>
+                    <div>길드 연동 실패</div>
+                <% }else{ %>
+                    <div>길드 연동</div>
+                    <div>
+                        <form action="/private_info/connect_guild" method="POST">
+                            <button>연동하기</button>
+                        </form>
+                    </div>
+                <% } %>
             </div>
         </div>
     </main>

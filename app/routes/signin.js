@@ -21,6 +21,7 @@ router.post('/signin', function(req, res, next) {
     let ID = req.body.id;
     let PW = crypto.createHash('sha512').update(req.body.pw).digest('base64');
     let EMAIL = req.body.email;
+    let WORLD = req.body.world;
     let GUILD = req.body.guild;
     let SERTIFY = req.body.sertify;
 
@@ -33,8 +34,8 @@ router.post('/signin', function(req, res, next) {
     function insert() {
         
         console.log('insert');
-        sql = `INSERT user_info (id, pw, email, guildname) 
-                VALUES('${ID}', '${PW}', '${EMAIL}', '${GUILD}') `;
+        sql = `INSERT user_info (id, pw, email, world, guildname) 
+                VALUES('${ID}', '${PW}', '${EMAIL}', '${WORLD}', '${GUILD}') `;
 
         conn.query(sql, (err, rows) => {
             if(err) {
