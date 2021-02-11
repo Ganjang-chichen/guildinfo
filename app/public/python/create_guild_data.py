@@ -54,13 +54,17 @@ def find_Dojang (name) :
 
     if dojang_cur_s.find('h1', {'class' : 'user-summary-floor'}) :
         dojang_best_info = dojang_cur_s.find('h1', {'class' : 'user-summary-floor'}).text.replace(' ','').replace('\n','')
+        if int(dojang_best_info.replace('층','')) < 10 :
+            dojang_best_info = '0' + dojang_best_info
     else:
-        dojang_best_info = 'non'
+        dojang_best_info = '00층'
 
     if(dojang_cur_s.find('tbody')) :
         dojang_latest_info = dojang_cur_s.find('tbody').find('tr').find('h5').text
+        if int(dojang_latest_info.replace('층','')) < 10 :
+            dojang_latest_info = '0' + dojang_latest_info
     else :
-        dojang_latest_info = 'non'
+        dojang_latest_info = '00층'
     
     dojang_class_info = dojang_cur_s.find_all('li', {'class' : 'user-summary-item'})[1].text
     
@@ -159,13 +163,7 @@ def make_guild_data_mk2 (GuildName, World) :
     else :
         return 'No Data'
         
-    return data;
-
-GuildName = "Lune"
-World =  str(WorldID['이노시스'])
-
-print(GuildName, World)
-
+    return data
 
 def weekly_prestige (GuildName, World) :
     guild_select_url = "https://maplestory.nexon.com/Ranking/World/Guild?t=1&n=" + GuildName;
@@ -322,6 +320,8 @@ input = sys.argv
 
 GuildName = input[1]
 World =  str(input[2])
+
+print(GuildName, World)
 
 data =  make_guild_data_mk2(GuildName, World)
 prestige = weekly_prestige(GuildName, World)

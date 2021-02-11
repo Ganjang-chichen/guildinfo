@@ -111,18 +111,32 @@ router.post('/connect_guild', (req, res) => {
                 args : [GUILDNAME, WORLD]
             };
 
-            PythonShell.PythonShell.run("create_guild_data.py", options, function(err, data) {
-                if (err) throw err;
-                console.log(data)
-                let sql3 = `UPDATE user_info SET guild_link = 2 WHERE id = '${ID}' `
-                conn.query(sql3, (err, rows2, field) => {
-                    if(err){
-                        console.log('error accured at connect g2 : ' + err);
-                    }else {
-                        console.log("update success at connect g2");
-                    }
+            try{
+                PythonShell.PythonShell.run("create_guild_data.py", options, function(err, data) {
+                    if (err) throw err;
+                    console.log(data)
+                    let sql3 = `UPDATE user_info SET guild_link = 2 WHERE id = '${ID}' `
+                    conn.query(sql3, (err, rows2, field) => {
+                        if(err){
+                            console.log('error accured at connect g2 : ' + err);
+                        }else {
+                            console.log("update success at connect g2");
+                        }
+                    });
                 });
-            });
+            }catch(e){
+                console.log("python shell error in private info" +  e.message);
+                let sql2 = `UPDATE user_info SET guild_link = 0 WHERE id = '${ID}' `
+                conn.query(sql2, (err, rows2, field) => {
+                    if(err){
+                        console.log('error accured at connect g3 : ' + err);
+                    }else {
+                        console.log("update success at connect g3");
+                    }
+                    res.redirect('/private_info');
+                });
+            }
+            
             
             let sql2 = `UPDATE user_info SET guild_link = 1 WHERE id = '${ID}' `
             conn.query(sql2, (err, rows2, field) => {
