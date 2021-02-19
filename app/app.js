@@ -7,6 +7,7 @@ var logger = require('morgan');
 var crypto = require('crypto');
 var database = require('./config/database.js');
 var conn = database.init();
+var schedule = require('node-schedule');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,6 +15,8 @@ var signinRouter = require('./routes/signin');
 var loginRouter = require('./routes/login');
 var privateinfoRouter = require('./routes/private_info');
 var radeRouter = require('./routes/rade');
+var flagRouter = require('./routes/flag');
+const { resolve } = require('path');
 
 var app = express();
 
@@ -41,6 +44,7 @@ app.use('/signin', signinRouter);
 app.use('/login', loginRouter);
 app.use('/private_info',privateinfoRouter);
 app.use('/rade', radeRouter);
+app.use('/flag', flagRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,6 +60,62 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+
+function update_data(){
+  let sql = `SELECT * FROM user_info WHERE guild_link = 2;`;
+  conn.query(sql, async (err, rows) => {
+    if(err){
+      console.log(`Error accured at update datas : ${err}`);
+    }else {
+      for(let i = 0; i < rows.length; i++) {
+        console.log(`update start : ${i}th`);
+
+        const ID = rows[i].id;
+        const GUILDNAME = rows[i].guildname;
+        const WORLD = rows[i].world;
+
+        let options = {
+          mode : 'text',
+          pythonPath: '',
+          pythonOptions: ['-u'],
+          scriptPath: './public/python/',
+          args : [GUILDNAME, WORLD, ID]
+        };
+
+        let promise = new Promise((resolve, reject) => {
+          PythonShell.PythonShell.run("create_guild_data.py", options, function(err, data) {
+            if (err) {
+              console.log(`Error accured at update datas : ${err}`);
+              throw err;
+            }else {
+              console.log(`update ${i}th job fin`);
+              resolve(1);
+            }
+          });
+        });
+
+        let result = await promise;
+        
+      }
+    }
+  });
+}
+
+let job = schedule.scheduleJob('01 01 11 * * *', () => {
+  update_data();
+});
+
+let maintain_connect = schedule.scheduleJob('00 00 * * * *', () => {
+  let sql = `SELECT CURDATE() FROM DUAL;`;
+  conn.query(sql, (err, rows) => {
+    if(err){
+      console.log('connection err ! ' + err);
+    }else {
+      console.log(rows);
+    }
+  });
 });
 
 module.exports = app;

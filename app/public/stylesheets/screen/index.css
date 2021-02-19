@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+.index_body {
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+.index_info{
+    margin: 20px;
+    text-align: center;
+    font-size: 70px;
+}
+
+.index_login,
+.index_private,
+.index_manage {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px;
+}
+
+.index_body button {
+    
+    background-color: rgba(0, 0, 0, 0);
+    width: 200px;
+    height: 200px;
+    border: black solid 2px;
+    border-radius: 20px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 45px;
+}

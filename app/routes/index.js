@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
       if(err){
         console.log('error accuered at index : ' + err);
       }else {
-        if(rows[0].mail_sertify === 1){
+        if(rows[0].guild_link === 2){
           ISSERTY = true;
         }else {
           ISSERTY = false;

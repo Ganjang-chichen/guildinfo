@@ -1,0 +1,30 @@
+.signin_main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signin_box form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+
+}
+
+.signin_box-info div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: black solid 2px;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.signin-btn {
+    background-color: rgba(0, 0, 0, 0);
+    width: 100px;
+}

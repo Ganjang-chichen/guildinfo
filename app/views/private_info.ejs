@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-    <header></header>
+    <header>
+        <form action="/" method="GET">
+            <button class="back_btn">&#60;</button>
+        </form>
+    </header>
     <main>
         <div>
-            <div> <%= id %> </div>
+            <div> id : <%= id %> </div>
             <div>
                 <% if(err) { %>
                     <div><%= err %></div>
@@ -20,7 +25,7 @@
             <div>
                 <% if(isserty) { %>
                     <div>메일 인증 완료</div>
-                <% }else { %>
+                <% }else if(id) { %>
                     <div>이메일 인증</div>
                     <form action="/private_info/send" method="POST">
                         <button onclick="alert('인증번호 발송 완료')" >인증번호 발송</button>
@@ -42,13 +47,16 @@
                     <div>길드 연동 완료</div>
                 <% }else if(g_link === -1) { %>
                     <div>길드 연동 실패</div>
-                <% }else{ %>
+                <% }else if(isserty){ %>
                     <div>길드 연동</div>
                     <div>
                         <form action="/private_info/connect_guild" method="POST">
                             <button>연동하기</button>
                         </form>
                     </div>
+                <% }else { %>
+                    <div>길드 연동</div>
+                    <div>이메일인증 필요</div>
                 <% } %>
             </div>
         </div>

@@ -4,12 +4,14 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <header></header>
+  <body class="index_body">
+    <header>
+
+    </header>
     <main>
-      <div>
+      <div class="index_info">
         <div>
-          환영합니다. <%= id %>
+          환영합니다. <br> <%= id %>
         </div>
         <div>
           <%= err %>
@@ -17,52 +19,46 @@
       </div>
 
       <% if (id === undefined || id === null) { %>
-      <div>
-        <form action="/login" method="GET">
-          <div>
+      <div class="index_login">
+        <div>
+          <form action="/login" method="GET">
             <button>로그인</button>
-          </div>
-        </form>
-      </div>
-      <div>
-        <form action="/signin" method="GET">
-          <div>
+          </form>
+        </div>
+        <div>
+          <form action="/signin" method="GET">
             <button>회원가입</button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
       <% } %>
 
       <% if (id !== undefined && id !== null) { %>
-        <div>
-          <form action="/private_info" method="GET">
-            <div>
+        <div class="index_private">
+          <div>
+            <form action="/private_info" method="GET">
               <button>이메일 인증 및 길드연동</button>
-            </div>
-          </form>
-        </div>
-        <div>
-          <form action="/logout" method="POST">
-            <div>
+            </form>
+          </div>
+          <div>
+            <form action="/logout" method="POST">
               <button>로그아웃</button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       <% } %>
 
       <% if (sertify) { %>
-      <div>
-        <form action="/rade" method="GET">
-          <div>
+      <div class="index_manage">
+        <div>
+          <form action="/rade" method="GET">
             <button>수로관리</button>
-          </div>
-        </form>
-      </div><div>
-        <form action="/index/mvflag" method="GET">
-          <div>
+          </form>
+        </div><div>
+          <form action="/flag" method="GET">
             <button>플래그 관리</button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
       <% } %>

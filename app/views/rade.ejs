@@ -12,6 +12,9 @@
             <button class="hide_optionbox-btn" onclick="hide_box()">&#45;</button>
             <button class="move_optionbox-btn" onclick="move_box()">창 이동</button>
         </div>
+        <form action="/" method="GET">
+            <button class="back_btn">&#60;</button>
+        </form>
     </header>
     <main>
         <div class="container_rade">
@@ -242,8 +245,6 @@
                 char_list[i].input_date = (new Date(char_list[i].input_date)).toLocaleString("en-US", {timeZone : "Asia/Seoul", hour12: false});
                 char_list[i].input_date = alter_dateformat(char_list[i].input_date.split(',')[0]);
             }
-            console.log(char_list);
-
             var guild_list = "<%= JSON.stringify(guild_info) %>"
             guild_list = guild_list.replaceAll('&#34;', '\"');
             guild_list = JSON.parse(guild_list);
@@ -251,7 +252,6 @@
                 guild_list[i].input_date = (new Date(guild_list[i].input_date)).toLocaleString("en-US", {timeZone : "Asia/Seoul", hour12: false});
                 guild_list[i].input_date = alter_dateformat(guild_list[i].input_date.split(',')[0]);
             }
-            console.log(guild_list);
         </script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">

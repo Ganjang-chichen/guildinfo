@@ -3,9 +3,13 @@
 @import "./component/variables.css";
 @import "./component/hidden.css";
 @import "./component/card.css";
+@import "./component/btn.css";
 
 /* screen */
 @import "./screen/rade.css";
+@import "./screen/index.css";
+@import "./screen/private_info.css";
+@import "./screen/signin.css";
 
 body {
   padding: 50px;
