@@ -288,7 +288,7 @@ def weekly_rade (GuildName, World) :
         return "No data"
 
         
-def data_input(World, GuildName, flag, rade, data): #데이터 입력
+def data_input(userID, World, GuildName, flag, rade, data): #데이터 입력
     if rade == 'No data':
         rade = 0
     else :
@@ -298,7 +298,7 @@ def data_input(World, GuildName, flag, rade, data): #데이터 입력
     else :
         flag = flag.replace(',','')
 
-    sql = "INSERT INTO guild_info (input_date, world, name, flag, rade) VALUES ( CURDATE(), '" + World + "', '" + GuildName + "', '" + str(flag) + "', '" + str(rade) + "')"
+    sql = "INSERT INTO guild_info (input_date, manager, world, name, flag, rade) VALUES ( CURDATE(), '" + userID + "', '" + World + "', '" + GuildName + "', '" + str(flag) + "', '" + str(rade) + "')"
     
     cursor.execute(sql)
     conn.commit()
@@ -314,12 +314,14 @@ def data_input(World, GuildName, flag, rade, data): #데이터 입력
         urllib.request.urlretrieve(url, './public/images/' + World + '/' + GuildName + '/' + datas['name'] + ".png")
         time.sleep(0.5)
     
+    cursor.close
 
 
 input = sys.argv
 
 GuildName = input[1]
 World =  str(input[2])
+userID = str(input[3])
 
 print(GuildName, World)
 
@@ -328,4 +330,4 @@ prestige = weekly_prestige(GuildName, World)
 flag = weekly_flag(GuildName, World)
 rade = weekly_rade(GuildName, World)
 
-data_input(World, GuildName, flag, rade, data)
+data_input(userID, World, GuildName, flag, rade, data)

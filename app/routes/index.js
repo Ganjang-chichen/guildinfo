@@ -9,6 +9,8 @@ router.get('/', function(req, res, next) {
   const ID = req.session.USERNAME;
   let ISSERTY = false;
 
+  console.log('5');
+
   if(ID) {
     let sql = `SELECT * FROM user_info WHERE id = '${ID}' `;
     conn.query(sql, (err, rows, field) => {
@@ -17,12 +19,13 @@ router.get('/', function(req, res, next) {
       }else {
         if(rows[0].mail_sertify === 1){
           ISSERTY = true;
-
-          res.render('index', { title: 'Express' 
+        }else {
+          ISSERTY = false;
+        }
+        res.render('index', { title: 'Express' 
                       , id : ID
                       , err : req.session.ERROR
                       , sertify : ISSERTY});
-        }
       }
     })
   }else {
@@ -36,6 +39,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/index', function(req, res, next) {
+  res.redirect('/');
+});
+
+router.post('/logout', function(req, res, next) {
+  
+  req.session.USERNAME = undefined;
+
   res.redirect('/');
 });
 

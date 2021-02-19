@@ -1,13 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+.container_rade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .guild_party_settings{
     display: flex;
     margin-top: 20px;
 }
 
-.guild_party_list{
+.guild_party_list01,
+.guild_party_list02,
+.guild_party_list03,
+.guild_party_list04,
+.guild_party_list05,
+.guild_party_list06,
+.guild_party_list07,
+.guild_party_list08,
+.guild_party_list09,
+.guild_party_list10,
+.guild_party_list11,
+.guild_party_list12{
     display: flex;
 }
 
-.partybox {
+.partybox{
     display: flex;
     flex-direction: column;
     width: 350px;
@@ -15,4 +35,87 @@
     overflow-y: scroll;
     background-color: antiquewhite;
     margin: 10px;
+    border: black solid 2px;
+    border-radius: 4px;
+}
+
+.option_box-rade {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    background-color: cornsilk;
+    border: black solid 3px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.guild_party_roomnum{
+    width: 1090px;
+    height: 80px;
+    font-family: 'Black Han Sans', sans-serif;
+    text-align: center;
+    font-size: 70px;
+    text-shadow: #FC0 1px 0 10px;
+    margin: 10px;
+    margin-top: 50px;
+}
+
+#chart_div {
+    border: black solid 2px;
+}
+
+@keyframes move_left {
+    0% {
+        right: 20px;
+    }
+
+    100% {
+        right: var(--left);
+    }
+}
+@keyframes move_right {
+    0% {
+        right: var(--left);
+    }
+
+    100% {
+        right: 20px;
+    }
+}
+
+.move_optionbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100px;
+    position: fixed;
+    right: 20px;
+    top: 70px;
+    z-index: 10;
+}
+
+.guild_not_join{
+    background-color: bisque;
+}
+
+.guild_not_join_content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    height: 600px;
+}
+
+.guild_not_join_li {
+    height: 600px;
+    width: 350px;
+    overflow-y: scroll;
+}
+.guild_not_join_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    font-family: 'Black Han Sans', sans-serif;
 }

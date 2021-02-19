@@ -1,5 +1,7 @@
 /* contponent */
 @import "./component/reset.css";
+@import "./component/variables.css";
+@import "./component/hidden.css";
 @import "./component/card.css";
 
 /* screen */

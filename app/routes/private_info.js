@@ -108,7 +108,7 @@ router.post('/connect_guild', (req, res) => {
                 pythonPath: '',
                 pythonOptions: ['-u'],
                 scriptPath: './public/python/',
-                args : [GUILDNAME, WORLD]
+                args : [GUILDNAME, WORLD, ID]
             };
 
             try{

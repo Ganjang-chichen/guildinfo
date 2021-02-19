@@ -34,13 +34,20 @@
       <% } %>
 
       <% if (id !== undefined && id !== null) { %>
-      <div>
-        <form action="/private_info" method="GET">
-          <div>
-            <button>이메일 인증 및 길드연동</button>
-          </div>
-        </form>
-      </div>
+        <div>
+          <form action="/private_info" method="GET">
+            <div>
+              <button>이메일 인증 및 길드연동</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <form action="/logout" method="POST">
+            <div>
+              <button>로그아웃</button>
+            </div>
+          </form>
+        </div>
       <% } %>
 
       <% if (sertify) { %>

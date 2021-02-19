@@ -1,0 +1,7 @@
+.hidden {
+    position: absolute;
+    margin: 0;
+    width: 0;
+    height: 0;
+    z-index: -1;
+}

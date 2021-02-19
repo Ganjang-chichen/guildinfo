@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 
+.card_mk2,
 .card {
     position: relative;
     display: flex;
@@ -8,18 +9,23 @@
     background-color: tomato;
     width: 300px;
     height: 70px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin: 10px;
     border: black solid 2px;
 }
 
-.chard_info{
+.card_mk2 {
+    background-color: cornflowerblue; 
+    /* 100 149 237 */
+}
+
+.card_info{
     font-family: 'Gugi', cursive;
     font-size: 11px;
     text-align: center;
 }
 
-.chard_info div:first-child{
+.card_info div:first-child{
     font-size: 15px;
 }
 
@@ -51,6 +57,17 @@
     
     border-radius: 10px;
 
+}
+
+.card_mk2 .gradation {
+    background: linear-gradient(
+        to right,
+        rgba(100, 149, 237, 0) 50%,
+        rgba(100, 149, 237, 0.25) 80%,
+        rgba(100, 149, 237, 0.5) 90%,
+        rgba(100, 149, 237, 0.75) 95%,
+        rgba(100, 149, 237, 1) 100%
+    );
 }
 
 .charimg{
