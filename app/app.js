@@ -7,6 +7,7 @@ var logger = require('morgan');
 var crypto = require('crypto');
 var database = require('./config/database.js');
 var conn = database.init();
+var PythonShell  = require('python-shell');
 var schedule = require('node-schedule');
 
 var indexRouter = require('./routes/index');
