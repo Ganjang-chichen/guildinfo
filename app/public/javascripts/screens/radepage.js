@@ -95,6 +95,8 @@ function get_card_html(c, name, best_floor, latest_floor, world, gname, room_num
         cls = '캐논마스터';
     }else if(c === '세미듀어러' || c === '듀어러' || c === '듀얼마스터' || c === '슬래셔'){
         cls = '듀얼블레이더';
+    }else if(c === 'X'){
+        cls = '초보자';
     }
 
     let listTags = `<div class="card" draggable="true">

@@ -71,11 +71,12 @@ function update_data(){
       console.log(`Error accured at update datas : ${err}`);
     }else {
       for(let i = 0; i < rows.length; i++) {
-        console.log(`update start : ${i}th`);
 
         const ID = rows[i].id;
         const GUILDNAME = rows[i].guildname;
         const WORLD = rows[i].world;
+
+        console.log(`update start : ${i}th : ${GUILDNAME} ${WORLD} ${ID}`);
 
         let options = {
           mode : 'text',
@@ -104,7 +105,7 @@ function update_data(){
   });
 }
 
-let job = schedule.scheduleJob('01 01 11 * * *', () => {
+let job = schedule.scheduleJob('01 30 12 * * *', () => {
   update_data();
 });
 

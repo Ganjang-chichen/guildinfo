@@ -66,14 +66,19 @@ def find_Dojang (name) :
     else :
         dojang_latest_info = '00층'
     
-    dojang_class_info = dojang_cur_s.find_all('li', {'class' : 'user-summary-item'})[1].text
     
+
+    if (dojang_cur_s.find_all('li', {'class' : 'user-summary-item'})) :
+        dojang_class_info = dojang_cur_s.find_all('li', {'class' : 'user-summary-item'})[1].text
+    else :
+        dojang_class_info = 'X'
+
     return [dojang_best_info, dojang_latest_info, dojang_class_info]
 
 
 
 def make_guild_data_mk2 (GuildName, World) :
-    guild_select_url = "https://maplestory.nexon.com/Ranking/World/Guild?t=1&n=" + GuildName;
+    guild_select_url = "https://maplestory.nexon.com/Ranking/World/Guild?t=1&n=" + GuildName
     SELECTED_GID = -1
 
     time.sleep(0.5)
