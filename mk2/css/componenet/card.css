@@ -1,0 +1,65 @@
+
+.char_card {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: tomato;
+    width: 180px;
+    height: 45px;
+    border-radius: 12px;
+    margin: 10px;
+    border: black solid 2px;
+}
+
+.card_img {
+    height: 100%;
+    width: 25%;
+
+    background: linear-gradient(
+        to left,
+        rgba(20, 20, 20, 0) 10%,
+        rgba(20, 20, 20, 0.25) 25%,
+        rgba(20, 20, 20, 0.5) 50%,
+        rgba(20, 20, 20, 0.75) 75%,
+        rgba(20, 20, 20, 1) 100%
+    );
+
+    border-radius: 10px;
+}
+
+.gradation{
+    position: absolute;
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 99, 71, 0) 50%,
+        rgba(255, 99, 71, 0.25) 80%,
+        rgba(255, 99, 71, 0.5) 90%,
+        rgba(255, 99, 71, 0.75) 95%,
+        rgba(255, 99, 71, 1) 100%
+    );
+    
+    border-radius: 10px;
+
+}
+
+
+.card_info{
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 10px;
+}
+.card_info > div{
+    display: flex;
+}
+
+.card_info > div > div{
+    margin: 0px 4px;
+}
