@@ -1,20 +1,31 @@
-
+/*
+카드 틀
+width : height = 5 : 1
+*/
 .char_card {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: tomato;
-    width: 180px;
-    height: 45px;
+    width: 250px;
+    height: 50px;
     border-radius: 12px;
     margin: 10px;
     border: black solid 2px;
+
+    text-shadow: -1px 0 rgba(255, 255, 255, 0.5),
+	       0 1px rgba(255, 255, 255, 0.5),
+	       1px 0 rgba(255, 255, 255, 0.5),
+	       0 -1px rgba(255, 255, 255, 0.5);
+
+    
 }
 
-.card_img {
+/*카드 직업 이미지*/
+.card_class_img {
     height: 100%;
-    width: 25%;
+    width: 20%;
 
     background: linear-gradient(
         to left,
@@ -28,10 +39,11 @@
     border-radius: 10px;
 }
 
+/*카드 직업 이미지 자연스럽게 그라데이션화*/
 .gradation{
     position: absolute;
     height: 100%;
-    width: 25%;
+    width: 20%;
     background: linear-gradient(
         to right,
         rgba(255, 99, 71, 0) 50%,
@@ -45,16 +57,16 @@
 
 }
 
-
+/*카드 정보*/
 .card_info{
     height: 100%;
-    width: 75%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    font-size: 10px;
+    font-size: 9px;
 }
 .card_info > div{
     display: flex;
@@ -62,4 +74,25 @@
 
 .card_info > div > div{
     margin: 0px 4px;
+}
+
+/*케릭터 이미지 조정*/
+.card_char_img{
+    position: absolute;
+    left: 65%;
+    top: -95%;
+
+    height: 250%;
+    width: 50%;
+}
+
+.card_char_space{
+    height: 100%;
+    width: 25%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 9px;
+    z-index: 1;
 }
