@@ -1,0 +1,43 @@
+
+.rade_rooms{
+    width: 75%;
+}
+
+.rade_room_idx{
+    text-align: center;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+.rade_party{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rade_party > div{
+    width: 270px;
+    height: 330px;
+
+    border: black 1px solid;
+    border-radius: 5px;
+}
+
+.rade_buff{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.rade_buff > div{
+    width: 270px;
+    min-height: 10px;
+    border-bottom: black 1px solid;
+    border-radius: 10px;
+}
+
+.rade_buff_all{
+    min-height: 10px;
+    border-bottom: black 1px solid;
+    border-radius: 30px;
+}

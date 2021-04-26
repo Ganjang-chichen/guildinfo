@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+    <div class="rade_container">
+        
+        <div class="rade_options">
+            <div>
+                <div class="rade_options_name">프리셋</div>
+                <select name="" id="">
+                    <option value="0">프리셋 미적용</option>
+                    <option value="1">프리셋1</option>
+                    <option value="2">프리셋2</option>
+                    <option value="3">프리셋3</option>
+                    
+                </select>
+            </div>
+            <div>
+                <button>불러오기</button>
+                <button>저장하기</button>
+            </div>
+            <div class="rade_options_line"></div>
+            <div>
+                <div class="rade_options_name">정렬하기</div>
+                <select name="" id="">
+                    <option value="0">무릉 최고기록 순</option>
+                    <option value="1">무릉 최근기록 순</option>
+                    <option value="2">직위 순</option>
+                </select>
+            </div>
+            <div class="rade_options_line"></div>
+            <div>
+                <div class="rade_options_name">검색하기</div>
+                <select name="" id="">
+                    <option value="0">이름 검색</option>
+                    <option value="1">직업이름 검색</option>
+                </select>
+            </div>
+            <input type="text"
+                placeholder="검색◁">
+            
+            <div class="rade_options_line"></div>
+            <div class="rade_not_selected">
+
+            </div>
+            
+
+        </div>
+
+        <div class="rade_rooms">
+            <div class="rade_room_idx">1번방</div>
+            <div class="rade_party">
+                <div class="rade_party1">
+                    <div class="char_card" draggable="true">
+                        <img src="images/class_char_img/아크메이지(불,독).png" alt="" class="card_class_img">
+                        <div class="gradation"></div>
+                        <div class="card_info">
+                            <div>
+                                <div class="card_name">ID: 계절계절</div>
+                                <div class="card_LV">LV: 225</div>
+                            </div>
+                            <div>
+                                <div class="card_class">직업: 아크메이지(불,독)</div>
+                                
+                            </div>
+                            <div>
+                                <div class="card_best_dojang">무릉 최고: 11층</div>
+                                <div class="card_latest_dojang">최근: 10층</div>
+                            </div>
+                            
+                        </div>
+                        <img src="https://avatar.maplestory.nexon.com/Character/180/PKNCKDLEMBCJGILBPKGPBAJOKKDLHBBFFPNLAAKPAKOBODNNKNEIADNPNADMODBLFGLBHAGINLCLDHDOHPCGNAMJNOHLLKGMLCHFKFEPMIAIHPEEBFLEDOJCAKCMKLPEDNJNNILEFJAEBOLEKACADMPPBPCLDHAABPLHHLDDEKOBDPGLOCAPNOIPBCANFMKPMPIOFKILPNMEPNNJDFHOOIKIADOKIKKBEMDOMPADELCCJGDIBGBNMDKHPBJFACNN.png" alt=""
+                                class="card_char_img"
+                                draggable="false">
+                        <div class="card_char_space"></div>
+                    </div>
+                </div>
+                <div class="rade_party2">
+
+                </div>
+                <div class="rade_party3">
+
+                </div>
+            </div>
+            <div class="rade_buff">
+                <div class="rade_buff_party1">
+    
+                </div>
+                <div class="rade_buff_party2">
+    
+                </div>
+                <div class="rade_buff_party3">
+    
+                </div>
+            </div>
+            <div class="rade_buff_all">
+    
+            </div>
+        </div>
+        
+        <div class="rade_rooms">
+            <div class="rade_room_idx">2번방</div>
+            <div class="rade_party">
+                <div class="rade_party1">
+
+                </div>
+                <div class="rade_party2">
+
+                </div>
+                <div class="rade_party3">
+
+                </div>
+            </div>
+            <div class="rade_buff">
+                <div class="rade_buff_party1">
+    
+                </div>
+                <div class="rade_buff_party2">
+    
+                </div>
+                <div class="rade_buff_party3">
+    
+                </div>
+            </div>
+            <div class="rade_buff_all">
+    
+            </div>
+        </div>
+
+        <footer>
+            <script>
+                const party1 = document.querySelectorAll(".rade_party1");
+                const party2 = document.querySelectorAll(".rade_party2");
+                const party3 = document.querySelectorAll(".rade_party3");
+                const default_party = document.querySelector(".rade_not_selected");
+            </script>
+            <script src="javascripts/screen/rade/addDragNDrop.js"></script>
+        </footer>
+
+    </div>
+</body>
+</html>

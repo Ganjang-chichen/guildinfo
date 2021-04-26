@@ -1,0 +1,59 @@
+
+
+.rade_options{
+    position: fixed;
+    top: 20%;
+    right: 1%;    
+    width: 270px;
+    padding: 3px;
+
+    border-left: black 1px solid;
+    border-radius: 5px;
+}
+.rade_options_line{
+    border-bottom: black 1px solid;
+}
+
+.rade_options > div{
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.rade_options_name{
+    text-align: center;
+    width: 50%;
+}
+
+.rade_options > div > select{
+    font-family: 'Gugi', cursive;
+    width: 50%;
+}
+
+.rade_options > input{
+    font-family: 'Gugi', cursive;
+    width: 100%;
+
+    text-align: center;
+}
+
+.rade_options > input::placeholder{
+    font-family: 'Gugi', cursive;
+    text-align: end;
+}
+
+.rade_options > div > button{
+    background-color: rgba(1, 1, 1, 0);
+    border: black solid 1px;
+    border-radius: 5px;
+    font-family: 'Gugi', cursive;
+    width: 50%;
+
+}
+.rade_not_selected{
+    flex-direction: column;
+    min-height: 100px;
+    
+}

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+
+
+@import "./component/card.css";
+
+@import "./screen/index/index.css";
+
+@import "./screen/signin/signin.css";
+
+@import "./screen/rade/raderoom.css";
+@import "./screen/rade/radeoption.css";
+body{
+    font-family: 'Gugi', cursive;
+}
+
+.hidden{
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    background-color: rgba(1, 1, 1, 0);
+    color: rgba(1, 1, 1, 0);
+    border: none;
+}

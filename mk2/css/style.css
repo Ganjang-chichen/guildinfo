@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 
-@import "./componenet/card.css";
+
+@import "./component/card.css";
+
+@import "./screen/rade/raderoom.css";
+@import "./screen/rade/radeoption.css";
+
+@import "./screen/menu/menu.css";
 
 body{
     font-family: 'Gugi', cursive;

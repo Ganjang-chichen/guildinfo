@@ -1,0 +1,28 @@
+.menu_body{
+    height: 100vh;
+}
+
+.menu_subject{
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.menu_idx{
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu_idx > div > button{
+    width: 100px;
+    height: 100px;
+
+    background-color: rgba(1, 1, 1, 0);
+    border: black 3px solid;
+    border-radius: 10%;
+
+    font-family: 'Gugi', cursive;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body class="menu_body">
+  <div class="menu_subject">길드 관리</div>
+  <div class="menu_idx">
+    <div>
+      <button class="menu_moveBtn">로그인</button>
+    </div>
+    <div>
+      <form action="/signin" method="GET">
+        <button class="menu_moveBtn">회원가입</button>
+      </form>
+    </div>
+    <div>
+      <form action="/rade" method="GET">
+        <button class="menu_moveBtn" type="submit">길드 수로 관리</button>
+      </form>
+    </div>
+    <div>
+      <button class="menu_moveBtn">길드 플래그 관리</button>
+    </div>
+  </div>
+</body>
+
+</html>

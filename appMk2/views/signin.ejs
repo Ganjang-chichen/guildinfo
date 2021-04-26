@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body class="signin_body">
+    <div class="singin_id_info">
+        <div class="singin_id_info_subj">회원가입</div>
+        <form action="/signin/signin" method="POST">
+            <div>
+                <div class="signin_id_info_idx">아이디</div>
+                <input type="text" name="id" class="signin_id_info_value"
+                    minlength="4" maxlength="20">
+            </div>
+            <div>
+                <div class="signin_id_info_idx">비밀번호</div>
+                <input type="password" class="signin_id_info_value"
+                    minlength="6" maxlength="24" onchange="pw_input()"
+                    id="signin_id">
+                <input type="password" class="hidden" name="pw"
+                    id="signin_hidden_pw">
+            </div>
+            <div>
+                <div class="signin_id_info_idx">길드 이름</div>
+                <input type="text" name="guild_name" class="signin_id_info_value">
+            </div>
+            <div>
+                <div class="signin_id_info_idx">월드 선택</div>
+                <select name="world" id="" class="signin_id_info_value">
+                    <option value="리부트2">리부트2</option>
+                    <option value="리부트">리부트</option>
+                    <option value="오로라">오로라</option>
+                    <option value="레드">레드</option>
+                    <option value="이노시스">이노시스</option>
+                    <option value="유니온">유니온</option>
+                    <option value="스카니아">스카니아</option>
+                    <option value="루나">루나</option>
+                    <option value="제니스">제니스</option>
+                    <option value="크로아">크로아</option>
+                    <option value="베라">베라</option>
+                    <option value="엘리시움">엘리시움</option>
+                    <option value="아케인">아케인</option>
+                    <option value="노바">노바</option>
+                    <option value="버닝">버닝</option>
+                    <option value="버닝2">버닝2</option>
+                    <option value="버닝3">버닝3</option>
+                </select>
+            </div>
+            <div>
+                <button class="signin_btn" type="submit">signin</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <script src="/javascripts/component/crypto.js"></script>
+        <script src="/javascripts/screen/signin/hash.js"></script>
+    </footer>
+
+</body>
+</html>
