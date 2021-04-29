@@ -215,7 +215,7 @@ function oseloAddEvent(){
     }
 }
 
-let socket = io.connect("");
+let socket = io.connect(mySocketAddr);
 socket.emit('joinRoom',{roomName : roomName});
 
 socket.on("recData", (data) => {
