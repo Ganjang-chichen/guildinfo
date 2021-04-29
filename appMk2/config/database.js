@@ -3,8 +3,8 @@ var db_info = {
     host: 'localhost',
     port: '3306',
     user: 'root',
-    password: '',
-    database: 'guild_management'
+    password: '!',
+    database: 'guildmanager'
 };
 
 module.exports = {

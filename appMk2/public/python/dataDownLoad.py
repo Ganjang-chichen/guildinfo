@@ -196,8 +196,8 @@ def init() :
     file_data["World"] = World
     file_data["charData"] = data
     
-    createFolder('.public/jsonData/' + WorldNo + '/' + GuildName)
-    with open('.public/jsonData/' + WorldNo + '/' + GuildName + '/charData.json', 'w', encoding="utf-8") as make_file:
+    createFolder('..public/jsonData/' + WorldNo + '/' + GuildName)
+    with open('..public/jsonData/' + WorldNo + '/' + GuildName + '/charData.json', 'w', encoding="utf-8") as make_file:
         json.dump(file_data, make_file, ensure_ascii=False, indent="\t")
 
 

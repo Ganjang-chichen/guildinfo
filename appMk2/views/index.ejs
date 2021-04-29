@@ -3,20 +3,23 @@
 
 <head>
   <title>
-    <%= title %>
+    
   </title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body class="menu_body">
   <div class="menu_subject">길드 관리</div>
+  <div class="menu_showID"></div>
   <div class="menu_idx">
-    <div>
-      <button class="menu_moveBtn">로그인</button>
+    <div class="menu_login_div">
+      <form action="/login" method="GET">
+        <button class="menu_moveBtn">로그인</button>
+      </form>
     </div>
     <div>
-      <form action="/signin" method="GET">
-        <button class="menu_moveBtn">회원가입</button>
+      <form action="/oselowatingroom" method="GET">
+        <button class="menu_moveBtn">오셀로</button>
       </form>
     </div>
     <div>
@@ -28,6 +31,11 @@
       <button class="menu_moveBtn">길드 플래그 관리</button>
     </div>
   </div>
+
+  <script>
+    let id = JSON.parse("<%= JSON.stringify(id)%>".replaceAll('&#34;', '\"'));
+  </script>
+  <script src="/javascripts/screen/index/index.js"></script>
 </body>
 
 </html>

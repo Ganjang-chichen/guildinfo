@@ -59,6 +59,21 @@
     <footer>
         <script src="/javascripts/component/crypto.js"></script>
         <script src="/javascripts/screen/signin/hash.js"></script>
+        <script>
+            let idIsExist = "<%= JSON.stringify(idIsExist)%>".replaceAll('&#34;', '\"');;
+            let guildNotExist = "<%= JSON.stringify(guildNotExist)%>".replaceAll('&#34;', '\"');;
+            
+            console.log(idIsExist);
+            console.log(guildNotExist);
+
+            if(idIsExist === 'true' && guildNotExist === 'true'){
+                alert("해당 아이디가 이미 존재합니다.\n일치하는 길드가 없습니다.");
+            }else if(guildNotExist === 'true'){
+                alert("일치하는 길드가 없습니다.");
+            }else if(idIsExist === 'true'){
+                alert("해당 아이디가 이미 존재합니다.");
+            }
+        </script>
     </footer>
 
 </body>

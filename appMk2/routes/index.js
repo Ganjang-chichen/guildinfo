@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  if(req.session.userid !== undefined && req.session.userid !== ""){
+    res.render('index', { "id" : req.session.userid });
+  }else{
+    res.render('index', { "id" : "" });
+  }
+  
 });
+
 
 module.exports = router;

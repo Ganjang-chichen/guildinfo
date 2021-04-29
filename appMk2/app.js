@@ -15,6 +15,9 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let radeRouter = require('./routes/rade');
 let signinRouter = require('./routes/signin');
+let loginRouter = require('./routes/login');
+let oselowatingroomRouter = require('./routes/oselowatingroom');
+let oseloRouter = require('./routes/oselo');
 
 let app = express();
 
@@ -35,11 +38,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/rade', radeRouter);
 app.use('/signin', signinRouter);
+app.use('/login', loginRouter);
+app.use('/oselowatingroom', oselowatingroomRouter);
+app.use('/oselo', oseloRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,24 +62,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-
-let options = {
-  mode : 'text',
-  pythonPath: '',
-  pythonOptions: ['-u'],
-  scriptPath: './public/python/',
-  args : ["test", "value"]
-};
-
-PythonShell.PythonShell.run("test.py", options, function(err, data) {
-  if (err) {
-    console.log(`Error accured at update datas : ${err}`);
-    throw err;
-  }else {
-    
-  }
 });
 
 module.exports = app;

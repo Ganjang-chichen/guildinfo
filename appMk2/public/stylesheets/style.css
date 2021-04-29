@@ -9,6 +9,10 @@
 
 @import "./screen/rade/raderoom.css";
 @import "./screen/rade/radeoption.css";
+
+@import "./screen/oselo/oselowatingroom.css";
+@import "./screen/oselo/oselo.css";
+
 body{
     font-family: 'Gugi', cursive;
 }

@@ -1,0 +1,25 @@
+
+.oselo_check_box{
+
+}
+
+.oselo_check_box > div{
+    display: flex;
+}
+
+.oselo_empty_box{
+    width: 50px;
+    height: 50px;
+
+    border: black 2px solid;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.player1{
+    color: blue;
+}
+.player2{
+    color: red;
+}

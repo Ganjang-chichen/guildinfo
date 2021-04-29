@@ -1,0 +1,38 @@
+
+.oselorooms_body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.oselorooms{
+    width: 75%;
+}
+
+.oselorooms > div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.oselorooms_subj{
+    text-align: center;
+    font-size: 50px;
+}
+
+.oselorooms_list >li{
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+}
+
+.oseloroom_newrooms_div{
+    display: flex;
+    flex-direction: row;
+    text-align: end;
+    justify-content: flex-end;
+}

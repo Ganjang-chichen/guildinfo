@@ -67,6 +67,4 @@ input = sys.argv
 GuildName = input[1]
 World =  str(WorldID[input[2]])
 
-print(GuildName, World)
-
-isGuildExist(GuildName, World)
+print(isGuildExist(GuildName, World))

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body class="signin_body">
+    <div class="singin_id_info">
+        <div class="singin_id_info_subj">로그인</div>
+        <form action="/login/login" method="POST">
+            <div>
+                <div class="signin_id_info_idx">아이디</div>
+                <input type="text" name="id" class="signin_id_info_value"
+                    minlength="4" maxlength="20">
+            </div>
+            <div>
+                <div class="signin_id_info_idx">비밀번호</div>
+                <input type="password" class="signin_id_info_value"
+                    minlength="6" maxlength="24" onchange="pw_input()"
+                    id="signin_id">
+                <input type="password" class="hidden" name="pw"
+                    id="signin_hidden_pw">
+            </div>
+            
+            <div>
+                <button class="login_btn" type="submit">로그인</button>
+            </div>
+        </form>
+        <form action="/signin" method="GET">
+            <button type="submit" class="signin_btn">회원가입</button>
+        </form>
+    </div>
+
+    <footer>
+        <script src="/javascripts/component/crypto.js"></script>
+        <script src="/javascripts/screen/signin/hash.js"></script>
+    </footer>
+</body>
+</html>

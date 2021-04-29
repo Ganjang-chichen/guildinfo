@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body class="oselorooms_body">
+    <div class="oselorooms">
+        <div class="oselorooms_subj">오셀로 방</div>
+        <div class="oseloroom_newrooms_div">
+            <form action="/oselowatingroom/newroom" method="GET">
+                <button class="oseloroom_newrooms_btn">+</button>
+            </form>
+        </div>
+        <ul class="oselorooms_list">
+            
+        </ul>
+        
+    </div>
+    <script>
+        let roomList = JSON.parse("<%= JSON.stringify(roomList)%>".replaceAll('&#34;', '\"'));
+        console.log(roomList);
+    </script>
+    
+    <script src="javascripts/screen/oselo/roomList.js"></script>
+</body>
+</html>
