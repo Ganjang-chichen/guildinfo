@@ -64,7 +64,7 @@ function scanline(idx){
         }
         
     }
-    //console.log(XList);
+    console.log(XList);
 
     let YList = new Array();
     for(let i = 0; i < 8; i++){
@@ -75,7 +75,7 @@ function scanline(idx){
         }
         
     }
-    //console.log(YList);
+    console.log(YList);
 
     let C1List = new Array();
     for(let i = 0; i < 8; i++){
@@ -87,7 +87,7 @@ function scanline(idx){
             }
         }
     }
-    //console.log(C1List);
+    console.log(C1List);
 
     let C2List = new Array();
     for(let i = 0; i < 8; i++){
@@ -99,7 +99,7 @@ function scanline(idx){
             }
         }
     }
-    //console.log(C2List);
+    console.log(C2List);
     return [XList, YList, C1List, C2List];
 }
 
@@ -107,57 +107,37 @@ function checkChangeList(list, player, otherPlayer){
     // 00122c00
     let changeList = new Array();
     let stack = new Array();
-    let status = "non"; // non > start > after click > after start > end
+    let click_idx = -1;
 
     for(let i = 0; i < list.length; i++){
-        let control = 0;
-        if(list[i][1] === player && status === "non"){
-            status = "start";
-            control = 1;
+        if(list[i][1] === "click"){
+            click_idx = i;
         }
-        else if(list[i][1] === otherPlayer && status === "start"){
-            stack.push(list[i][0]);
-            control = 2;
-        }
-        else if(list[i][1] === "click" && status === "start"){
-            changeList = stack;
-            stack = new Array();
-            status = "after click";
-            control = 3;
-        }
-        else if(list[i][1] !== "click" && status === "start"){
-            stack = new Array();
-            status = "non";
-            control = 4;
-        }
-        else if(list[i][1] === "click" && status === "non"){
-            status = "after click";
-            control = 5;
-        }
-        else if(list[i][1] === otherPlayer 
-            && (status === "after click" || status === "after start")){
-            status = "after start";
-            stack.push(list[i][0]);
-            control = 6;
-        }
-        else if(list[i][1] !== player && list[i][1] !== otherPlayer 
-            && status === "after start"){
-            status = "end";
-            control = 7;
-        }
-        else if(list[i][1] === player && status === "after start"){
-            changeList = new Array().concat(changeList, stack);
-            status = "end";
-            control = 8;
-        }
-        else if(list[i][1] !== otherPlayer && status === "after click"){
-            status = "end";
-            control = 9;
-        }
-        
-        //console.log(`i : ${i} control : ${control} idx : ${list[i][0]} list : ${list[i][1]} status : ${status}`);
+    }
 
-        if(status === "end"){
+    for(let i = click_idx + 1; i < list.length; i++){
+        if(list[i][1] === "fa-skull" || list[i][1] === "empty"){
+            break;
+        }
+        if(list[i][1] === otherPlayer){
+            stack.push(list[i][0]);
+        }
+        if(list[i][1] === player){
+            changeList = new Array().concat(changeList, stack);
+            break;
+        }
+    }
+
+    stack = new Array();
+    for(let i = click_idx - 1; i >= 0; i--){
+        if(list[i][1] === "fa-skull" || list[i][1] === "empty"){
+            break;
+        }
+        if(list[i][1] === otherPlayer){
+            stack.push(list[i][0]);
+        }
+        if(list[i][1] === player){
+            changeList = new Array().concat(changeList, stack);
             break;
         }
     }
@@ -218,11 +198,68 @@ function oseloAddEvent(){
 let socket = io.connect(mySocketAddr);
 socket.emit('joinRoom',{roomName : roomName});
 
-socket.on("recData", (data) => {
-  console.log(`turn : ${data.turn} recieved data : ${data.oceloTable}`);
+socket.on("recData", (data) => { // 클릭후 데이터 수신
+  //console.log(`turn : ${data.turn} recieved data : ${data.oceloTable}`);
   settingTable(data.oceloTable);
   turn = data.turn;
+  round++;
+  let state_f = isFinish(turn);
+  document.querySelector(".oselo_userinfo").querySelector(`.player1`).innerText = `[player 1 : ${state_f[1]} ]`;
+  document.querySelector(".oselo_userinfo").querySelector(`.player2`).innerText = `[player 2 : ${state_f[2]} ]`;
+  document.querySelector(".oselo_turn_info").innerText = `[turn : ${turn}]`;
+  document.querySelector(".oselo_round_info").innerText = `[round : ${round}]`;
+
+  if(status_f[0] && status_f[1]){
+    if(state_f[1] > state_f[2]){
+        alert("player1 이 승리하였습니다.");
+    }else if(state_f[1] < state_f[2]){
+        alert("player2 이 승리하였습니다.");
+    }else{
+        alert("무승부 입니다.");
+    }
+    location.replace(myServerUrl + "/oselowatingroom?eraseRoom=" + data.roomName);
+  }
+  if(!state_f[0]){
+    if(turn === "player1"){
+        alert("player1 은 더이상 둘 곳이 없습니다!");
+        status_f[0] = true;
+        turn = "player2";
+        document.querySelector(".oselo_turn_info").innerText = `[turn : ${turn}]`;
+        state_f = isFinish(turn);
+        if(!state_f[0]){
+            status_f[1] = true;
+        }
+    }else if(turn === "player2"){
+        alert("player2 은 더이상 둘 곳이 없습니다!");
+        status_f[1] = true;
+        turn = "player1";
+        document.querySelector(".oselo_turn_info").innerText = `[turn : ${turn}]`;
+        state_f = isFinish(turn);
+        if(!state_f[0]){
+            status_f[0] = true;
+        }
+    }
+
+    if(status_f[0] && status_f[1]){
+        if(state_f[1] > state_f[2]){
+            alert("player1 이 승리하였습니다.");
+        }else if(state_f[1] < state_f[2]){
+            alert("player2 이 승리하였습니다.");
+        }else{
+            alert("무승부 입니다.");
+        }
+        location.replace(myServerUrl + "/oselowatingroom?eraseRoom=" + data.roomName);
+      }
+
+  }
 });
+
+// 연결 두절
+socket.on("disconnect", (data) => {
+    console.log("소켓 통신 두절 감지");
+    alert(`상대방이 나갔습니다. : ${data.player}`);
+    location.replace(myServerUrl + "/oselowatingroom?eraseRoom=" + data.roomName);
+  });
 
 settingTable(oceloTable);
 oseloAddEvent();

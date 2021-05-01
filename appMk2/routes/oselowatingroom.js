@@ -11,6 +11,15 @@ router.get('/', function(req, res, next) {
   if(id === undefined || id === ""){
     res.redirect('/');
   }else {
+    let eraseRoom = req.query.eraseRoom;
+    if(eraseRoom !== undefined && eraseRoom !== null && eraseRoom !== ""){
+      for(let i = 0; i < roomList.length; i++){
+        if(roomList[i] === eraseRoom){
+          roomList.splice(i, 1);
+          break;
+        }
+      }
+    }
     res.render('oselowatingroom', { roomList: roomList });
   }
 });

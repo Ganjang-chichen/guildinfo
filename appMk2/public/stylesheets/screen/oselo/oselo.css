@@ -23,3 +23,8 @@
 .player2{
     color: red;
 }
+
+.oselo_userinfo{
+    display: flex;
+    font-size: 30px;
+}

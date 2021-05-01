@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
+    <div class="oselo_userinfo">
+        <div class="player1">[player 1 : ]</div>
+        <div class="player2">[player 2 : ]</div>
+    </div>
+    <div class="oselo_userinfo">
+        <div class="oselo_turn_info">[turn : ]</div>
+        <div class="oselo_round_info">[round : ]</div>
+    </div>
     <div class="oselo_check_box">
         <div>
             <div class="oselo_empty_box" id="oselo_1_1"></div>
@@ -114,10 +122,14 @@
         let player1 = JSON.parse("<%= JSON.stringify(player1)%>".replaceAll('&#34;', '\"'));
         let player2 = JSON.parse("<%= JSON.stringify(player2)%>".replaceAll('&#34;', '\"'));
         let roomName = JSON.parse("<%= JSON.stringify(roomName)%>".replaceAll('&#34;', '\"'));
+
+        let status_f = [false, false];
+        let round = 0;
         //console.log(oceloTable);
     </script>
     <script src="../socket.io-client/dist/socket.io.js"></script>
     <script src="/javascripts/component/key.js"></script>
+    <script src="/javascripts/screen/oselo/finishCondition.js"></script>
     <script src="/javascripts/screen/oselo/oselo.js"></script>
     
 </body>

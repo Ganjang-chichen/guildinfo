@@ -24,17 +24,18 @@ let oceloTable = [
     ];
 
 function oceloSettings(table) {
+    let newTable = table.slice();
     for (let i = 0; i < 5; i++) {
         let rdm = getRandomInt(0, 64);
-        if (table[rdm] === "empty") {
-        table[rdm] = "fa-skull";
+        if (newTable[rdm] === "empty") {
+            newTable[rdm] = "fa-skull";
         } else {
         i = i - 1;
         }
     }
     setting = 1;
 
-    return table;
+    return newTable;
 }
 
 let roomStatus = new Array();
@@ -64,7 +65,9 @@ router.get('/', function(req, res, next) {
                         turn : "player1",
                         player1 : req.session.userid,
                         player2 : "",
-                        user: req.session.userid};
+                        user: req.session.userid,
+                        player1ID : "",
+                        player2ID : ""};
             roomStatus.push(info);
             res.render('oselo', info);
         }
@@ -84,8 +87,33 @@ io.on('connection', (socket) => {
     roomName = data.roomName;
   });
 
-  socket.on('disconnect', () => {
+  socket.on('disconnect', (data) => {
     console.log("disconnect");
+    console.log(data);
+    console.log(instanceId);
+
+    for(let i = 0; i < roomStatus.length; i++){
+        if(roomStatus[i].roomName === roomName){
+            
+            if(roomStatus[i].player1ID === instanceId){
+                console.log("player1 is disconnect!");
+                roomStatus.splice(i, 1);
+                io.sockets.in(roomName).emit('disconnect', {player : "player1",
+                                                            roomName : roomName});
+            }else if(roomStatus[i].player2ID === instanceId){
+                console.log("player2 is disconnect!");
+                roomStatus.splice(i, 1);
+                io.sockets.in(roomName).emit('disconnect', {player : "player2",
+                                                            roomName : roomName});
+            }else if(roomStatus[i].player1ID === "" || roomStatus.player2ID === ""){
+                console.log("player is disconnect!");
+                roomStatus.splice(i, 1);
+                io.sockets.in(roomName).emit('disconnect', {player : "player",
+                                                            roomName : roomName});
+            }
+            break;
+        }
+    }
   });
 
   socket.on('getData', (data) => {
@@ -105,8 +133,10 @@ io.on('connection', (socket) => {
     roomStatus[tableIdx].oceloTable[data.click] = data.player;
     if(data.player === "player1"){
         roomStatus[tableIdx].turn = "player2";
+        roomStatus[tableIdx].player1ID = instanceId;
     }else if(data.player === "player2"){
         roomStatus[tableIdx].turn = "player1";
+        roomStatus[tableIdx].player2ID = instanceId;
     }
     
     io.sockets.in(roomName).emit('recData', roomStatus[tableIdx]);
