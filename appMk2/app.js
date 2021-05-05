@@ -18,6 +18,7 @@ let signinRouter = require('./routes/signin');
 let loginRouter = require('./routes/login');
 let oselowatingroomRouter = require('./routes/oselowatingroom');
 let oseloRouter = require('./routes/oselo');
+let entergroupRouter = require('./routes/entergroup');
 
 let app = express();
 
@@ -47,6 +48,7 @@ app.use('/signin', signinRouter);
 app.use('/login', loginRouter);
 app.use('/oselowatingroom', oselowatingroomRouter);
 app.use('/oselo', oseloRouter);
+app.use('/entergroup', entergroupRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
