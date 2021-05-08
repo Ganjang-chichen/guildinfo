@@ -157,6 +157,7 @@ def make_guild_data_mk2 (GuildName, World) :
                                'position' : col1,
                                'img_src' : col2,
                                'name' : col21,
+                               'category' : col22,
                                'class' : Dojang_log[2],
                                'Lv' : col3,
                                'exp' : col4,

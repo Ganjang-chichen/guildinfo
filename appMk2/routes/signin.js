@@ -14,11 +14,18 @@ router.get('/', function(req, res, next) {
   if(req.session.userid !== undefined && req.session.userid !== ""){ // 이미 로그인 상태면 메인 화면으로
     res.redirect("/");
   }else{
-    let idIsExist = req.session.idIsExist;
-    let guildNotExist = req.guildNotExist;
-    
-    res.render('signin', {"idIsExist" : req.session.idIsExist,
-                            "guildNotExist" : req.session.guildNotExist});
+    let idIsExist = false;
+    let guildNotExist = false;
+
+    let errmsg = req.session.errmsg;
+    console.log(errmsg);
+    if(errmsg !== undefined && errmsg !== null){
+      idIsExist = errmsg.includes("idIsExist");
+      guildNotExist = errmsg.includes("guildNotExist");
+    }
+
+    res.render('signin', {"idIsExist" : idIsExist,
+                            "guildNotExist" : guildNotExist});
   }
   
 });
@@ -45,7 +52,9 @@ router.post('/signin', (req, res, next) => {
       console.log(`Error accured at update datas : ${err}`);
       throw err;
     }else {
+      console.log(data);
       if(data[0] === "False"){
+        
         guildNotExist = true;
       }
 
@@ -59,7 +68,7 @@ router.post('/signin', (req, res, next) => {
             idIsExist = true;
           }
 
-          if(!idIsExist & !guildNotExist){
+          if(!idIsExist && !guildNotExist){
             req.session.userid = id;
             sql = `INSERT INTO user (id, pw, guild_name, world) 
                     VALUES ('${id}', '${pw}', '${guild_name}', '${world}');`
@@ -71,8 +80,15 @@ router.post('/signin', (req, res, next) => {
               }
             });
           }else{
-            req.session.idIsExist = idIsExist;
-            req.session.guildNotExist = guildNotExist;
+            let errmsg = "";
+            if(idIsExist){
+              errmsg += "idIsExist" + " ";
+            }
+            if(guildNotExist){
+              errmsg += "guildNotExist" + " ";
+            }
+
+            req.session.errmsg = errmsg;
             res.redirect('/signin');
           }
         }

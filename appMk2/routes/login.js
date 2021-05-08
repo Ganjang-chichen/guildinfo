@@ -29,6 +29,11 @@ router.post('/login', (req, res, next) => {
             }else{
                 if(rows[0]["id"] === id && rows[0]["pw"] === pw){
                     req.session.userid = id;
+                    req.session.userguild = rows[0]["guild_name"];
+                    req.session.userworld = rows[0]["world"];
+                    req.session.usergroup = rows[0]["group"];
+                    req.session.usergroupposition = rows[0]["group_position"];
+                    req.session.usercharname = rows[0]["char_name"];
                     res.redirect('/');
                 }
             }

@@ -61,6 +61,8 @@ def isGuildExist(GuildName, World) :
 
         if isExist == False :
             return False
+    else :
+        return False
 
 
 input = sys.argv
