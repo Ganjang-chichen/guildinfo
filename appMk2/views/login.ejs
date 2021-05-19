@@ -37,6 +37,12 @@
     <footer>
         <script src="/javascripts/component/crypto.js"></script>
         <script src="/javascripts/screen/signin/hash.js"></script>
+        <script>
+            let err = JSON.parse("<%= JSON.stringify(err)%>".replaceAll('&#34;', '\"'));
+            if(err === "login_failed"){
+                alert("아이디 또는 비밀번호가 틀렸습니다.");
+            }
+        </script>
     </footer>
 </body>
 </html>

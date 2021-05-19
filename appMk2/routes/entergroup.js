@@ -55,15 +55,10 @@ router.get('/', function(req, res, next) {
         
         res.render('entergroup', data);
       }
-      
-      
     })
-
-    
   }else {
     res.redirect('/');
   }
-  
   
 });
 
