@@ -13,6 +13,8 @@
 @import "./screen/oselo/oselowatingroom.css";
 @import "./screen/oselo/oselo.css";
 
+@import "./screen/entergroup/entergrouop.css";
+
 body{
     font-family: 'Gugi', cursive;
 }

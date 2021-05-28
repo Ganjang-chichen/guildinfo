@@ -11,6 +11,8 @@
     <div class="singin_id_info">
         <div class="singin_id_info_subj">회원가입</div>
         <form action="/signin/signin" method="POST">
+            <input type="password" class="hidden" name="pw"
+                    id="signin_hidden_pw">
             <div>
                 <div class="signin_id_info_idx">아이디</div>
                 <input type="text" name="id" class="signin_id_info_value"
@@ -21,12 +23,14 @@
                 <input type="password" class="signin_id_info_value"
                     minlength="6" maxlength="24" onchange="pw_input()"
                     id="signin_id">
-                <input type="password" class="hidden" name="pw"
-                    id="signin_hidden_pw">
             </div>
             <div>
                 <div class="signin_id_info_idx">길드 이름</div>
                 <input type="text" name="guild_name" class="signin_id_info_value">
+            </div>
+            <div>
+                <div class="signin_id_info_idx">케릭터 명</div>
+                <input type="text" name="char_name" class="signin_id_info_value">
             </div>
             <div>
                 <div class="signin_id_info_idx">월드 선택</div>
@@ -57,24 +61,37 @@
     </div>
 
     <footer>
-        <script src="/javascripts/component/crypto.js"></script>
-        <script src="/javascripts/screen/signin/hash.js"></script>
-        <script>
-            let idIsExist = "<%= JSON.stringify(idIsExist)%>".replaceAll('&#34;', '\"');;
-            let guildNotExist = "<%= JSON.stringify(guildNotExist)%>".replaceAll('&#34;', '\"');;
-            
-            console.log(idIsExist);
-            console.log(guildNotExist);
-
-            if(idIsExist === 'true' && guildNotExist === 'true'){
-                alert("해당 아이디가 이미 존재합니다.\n일치하는 길드가 없습니다.");
-            }else if(guildNotExist === 'true'){
-                alert("일치하는 길드가 없습니다.");
-            }else if(idIsExist === 'true'){
-                alert("해당 아이디가 이미 존재합니다.");
-            }
-        </script>
+        
     </footer>
 
+    <script src="/javascripts/component/crypto.js"></script>
+    <script src="/javascripts/screen/signin/hash.js"></script>
+    <script>
+        let idIsExist = "<%= JSON.stringify(idIsExist)%>".replaceAll('&#34;', '\"');
+        let guildNotExist = "<%= JSON.stringify(guildNotExist)%>".replaceAll('&#34;', '\"');
+        let guildNotCorrect = "<%= JSON.stringify(guildNotCorrect)%>".replaceAll('&#34;', '\"');
+        let charNotExist = "<%= JSON.stringify(charNotExist)%>".replaceAll('&#34;', '\"');
+        
+        console.log(idIsExist);
+        console.log(guildNotExist);
+        console.log(guildNotCorrect);
+        console.log(charNotExist);
+
+        if(idIsExist === 'true' && guildNotExist === 'true'){
+            alert("해당 아이디가 이미 존재합니다.\n일치하는 길드가 없습니다.");
+        }else if(guildNotExist === 'true'){
+            alert("일치하는 길드가 없습니다.");
+        }else if(idIsExist === 'true'){
+            alert("해당 아이디가 이미 존재합니다.");
+        }
+
+        if(guildNotCorrect === 'true'){
+            alert("캐릭터의 길드가 일치하지 않습니다.");
+        }
+        if(charNotExist === 'true'){
+            alert("해당 캐릭터가 존재하지 않습니다.");
+        }
+
+    </script>
 </body>
 </html>

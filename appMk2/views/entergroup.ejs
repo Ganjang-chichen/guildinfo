@@ -5,61 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <div>
-        <div>현재 아이디 정보</div>
-        <div>케릭터 명 : </div>
-        <div>그룹 정보 : </div>
-        <div>그룹 마스터 : </div>
-    </div>
-    <div>
-        <div>
-            <form action="/entergroup/set_char" method="POST">
-                <input type="text" name="set_char">
-                <button>케릭터 명 설정</button>
-            </form>
+    <header></header>
+    <main class="entergroup-container">
+        <div class="entergroup-userinfo">
+            <div>현재 아이디 정보</div>
+            <div class="entergroup-char_name">캐릭터 명 : </div>
+            <div class="entergroup-group">그룹 정보 : </div>
+            <div class="entergroup-position">직위 : </div>
         </div>
         <div>
-            <div>그룹참가 신청하기</div>
-            <form action="">
-                <input type="text" name="join_group">
-                <button>신청</button>
-            </form>
+            <div class="entergroup-joingroup">
+                <div>그룹참가 신청하기</div>
+                <form action="/entergroup/enter_group" method="POST">
+                    <input type="text" name="join_group">
+                    <button>신청</button>
+                </form>
+            </div>
+            <div class="entergroup-newgroup">
+                <div>그룹 생성하기</div>
+                <form action="/entergroup/newgroup" method="POST">
+                    <button>생성</button>
+                </form>
+            </div>
+            <div class="entergroup-updateData">
+                <div>정보 다운받기</div>
+                <form action="/entergroup/updateData" method="GET">
+                    <button type="submit" class="entergroup-downloadBtn">다운로드</button>
+                </form>
+            </div>
         </div>
         <div>
-            <div>그룹 생성하기</div>
-            <form action="">
-                <button>생성</button>
-            </form>
+            <div class="entergroup-applicant_list">
+                <div>그룹 신청 현황</div>
+                <div>
+        
+                </div>
+            </div>
+            <div class="entergroup-manage_group">
+                <div>그룹 관리</div>
+                <div>
+        
+                </div>
+            </div>
         </div>
-        <div>
-            <div>정보 갱신하기</div>
-            <form action="">
-                <button>갱신</button>
-            </form>
-        </div>
-    </div>
-    <div>
-        <div>그룹 신청 현황</div>
-        <div>
-
-        </div>
-    </div>
-    <div>
-        <div>그룹 관리</div>
-        <div>
-
-        </div>
-    </div>
+    </main>
 
     <script>
         let user_info = JSON.parse("<%= JSON.stringify(user_info)%>".replaceAll('&#34;', '\"'));
-        let guildNotSame = JSON.parse("<%= JSON.stringify(guildNotSame)%>".replaceAll('&#34;', '\"'));
+        let err = JSON.parse("<%= JSON.stringify(err)%>".replaceAll('&#34;', '\"'));
         let applicant = JSON.parse("<%= JSON.stringify(applicant)%>".replaceAll('&#34;', '\"'));
+        let msg = JSON.parse("<%= JSON.stringify(msg)%>".replaceAll('&#34;', '\"'));
+
         console.log(user_info);
-        console.log(guildNotSame);
+        console.log(err);
         console.log(applicant);
+        console.log(msg);
+
+        function isValEmpty(val){
+            if(val === undefined || val === null || val === ""){
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+
     </script>
+    <script src="/javascripts/screen/entergroup/entergroup.js"></script>
 </body>
 </html>

@@ -23,6 +23,7 @@ router.post('/login', (req, res, next) => {
     let pw = crypto.createHash('sha512').update(req.body.pw).digest('base64');
   
     let sql = `SELECT * FROM user WHERE id = '${id}' AND pw = '${pw}';`;
+    
     conn.query(sql, (err, rows) => {
         if(err){
             console.log("login err : " + err);
@@ -39,9 +40,11 @@ router.post('/login', (req, res, next) => {
                     req.session.userid = id;
                     req.session.userguild = rows[0]["guild_name"];
                     req.session.userworld = rows[0]["world"];
-                    req.session.usergroup = rows[0]["group"];
+                    req.session.usergroup = rows[0]["group_name"];
                     req.session.usergroupposition = rows[0]["group_position"];
                     req.session.usercharname = rows[0]["char_name"];
+                    req.session.isDataLoaded = rows[0]["dataloaded"];
+                    
                     res.redirect('/');
                 }else {
                     req.session.errmsg = "login_failed";

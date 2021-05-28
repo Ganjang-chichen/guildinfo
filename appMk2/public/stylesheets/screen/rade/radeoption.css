@@ -22,7 +22,8 @@
     margin-bottom: 3px;
 }
 
-.rade_options_name{
+.rade_options_name,
+.rade_options_move{
     text-align: center;
     width: 50%;
 }
