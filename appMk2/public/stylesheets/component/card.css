@@ -11,7 +11,7 @@ width : height = 5 : 1
     width: 250px;
     height: 50px;
     border-radius: 12px;
-    margin: 10px;
+    margin: 5px;
     border: black solid 2px;
 
     text-shadow: -1px 0 rgba(255, 255, 255, 0.5),

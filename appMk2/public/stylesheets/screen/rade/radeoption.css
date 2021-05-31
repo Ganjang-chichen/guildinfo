@@ -4,11 +4,13 @@
     position: fixed;
     top: 20%;
     right: 1%;    
-    width: 270px;
+    width: 300px;
     padding: 3px;
 
     border-left: black 1px solid;
     border-radius: 5px;
+
+    max-height: 70%;
 }
 .rade_options_line{
     border-bottom: black 1px solid;
@@ -54,7 +56,12 @@
 
 }
 .rade_not_selected{
-    flex-direction: column;
-    min-height: 100px;
+    position: relative;
+    
+    min-height: 200px;
+    max-height: 450px;
+    padding-top: 20px;
+    
+    overflow-y: scroll;
     
 }

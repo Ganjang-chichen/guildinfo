@@ -47,10 +47,11 @@
             <div class="rade_options_line"></div>
             <div>
                 <div class="rade_options_name">정렬하기</div>
-                <select name="" id="">
-                    <option value="0">무릉 최고기록 순</option>
-                    <option value="1">무릉 최근기록 순</option>
-                    <option value="2">직위 순</option>
+                <select class="rade_options_sorting" id="" onchange="sortingCard()">
+                    <option value="best">무릉 최고기록 순</option>
+                    <option value="latest">무릉 최근기록 순</option>
+                    <option value="name">이름 순</option>
+                    <option value="className">직업별</option>
                 </select>
             </div>
             <div class="rade_options_line"></div>
@@ -65,8 +66,10 @@
                 placeholder="검색◁">
             
             <div class="rade_options_line"></div>
-            <div class="rade_not_selected">
+            <div>
+                <div class="rade_not_selected">
 
+                </div>
             </div>
             
 
